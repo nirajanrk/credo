@@ -1,4 +1,21 @@
 Credo::Application.routes.draw do
+  ##get "users/index"
+
+  ##get "users/show"
+
+  authenticated :user do
+	root :to => 'home#index'
+	end
+
+	devise_scope :users do
+		root :to => "home#index"
+	end
+	
+	#after_sign_in_path_for and after_sign_out_path_for
+
+  devise_for :users
+  resources :users, :only => [:show, :index]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
