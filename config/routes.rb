@@ -3,12 +3,12 @@ Credo::Application.routes.draw do
 
   ##get "users/show"
 
-  authenticated :user do
-	root :to => 'home#index'
+	authenticated :user do
+		root :to => 'home#index'
 	end
 
-	devise_scope :users do
-		root :to => "home#index"
+	devise_scope :user do
+		root :to => 'devise/sessions#new'
 	end
 	
 	#after_sign_in_path_for and after_sign_out_path_for
