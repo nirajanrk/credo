@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_filter :authenticate_source!
+  before_filter :authenticate_user!
 
   def index
 	@authors = Author.all
@@ -8,7 +8,4 @@ class AuthorsController < ApplicationController
   def show
 	@author = Author.find(params[:id])
   end
-  
-  author1 = Author.create(:firstname => "Nirajan", :lastname => "Rajkarnikar")
-  
 end
