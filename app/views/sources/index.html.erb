@@ -1,3 +1,1 @@
-<% @sources.each do |source| %>
-  <%= source.title %>
-<% end %>
+<%= render :partial => 'source', :collection => @sources %>
