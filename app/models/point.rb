@@ -1,7 +1,3 @@
-class Author < ActiveRecord::Base
-	
-	has_many_belongs_to :sources
-	
-
-  attr_accessible :point
+class Point < ActiveRecord::Base
+  attr_accessible :point, :createdate
 end
