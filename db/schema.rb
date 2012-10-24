@@ -11,12 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013141612) do
+ActiveRecord::Schema.define(:version => 20121024023057) do
 
   create_table "authors", :force => true do |t|
     t.string   "firstname"
     t.string   "middlename"
     t.string   "lastname"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "points", :force => true do |t|
+    t.text     "point"
+    t.datetime "createdate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

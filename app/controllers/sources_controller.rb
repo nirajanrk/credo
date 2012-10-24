@@ -4,7 +4,11 @@ class SourcesController < ApplicationController
   def index
 	@sources = Source.all
   end
-
+  
+ def create
+	@sources = Source.all
+  end
+  
   def show
 	@source = Source.find(params[:id])
   end

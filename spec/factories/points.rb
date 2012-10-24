@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :point do
-    [point "MyText"
+    point "MyText"
     createdate ""
   end
 end
