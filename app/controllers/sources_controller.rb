@@ -2,14 +2,19 @@ class SourcesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-	@sources = Source.all
+	  @sources = Source.all
   end
-  
- def create
-	@sources = Source.all
+
+  def new
+    @source = Source.new
   end
-  
+
+  def create
+    @source = Source.create(params["source"])
+    redirect_to sources_path
+  end
+
   def show
-	@source = Source.find(params[:id])
+	  @source = Source.find(params[:id])
   end
 end
