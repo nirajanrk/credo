@@ -13,7 +13,7 @@ Credo::Application.routes.draw do
 
   get "points/show"
   
-  post "sources/new"
+  ##post "sources/new"
 
   ##get "users/index"
 
