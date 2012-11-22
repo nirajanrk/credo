@@ -12,6 +12,8 @@ Credo::Application.routes.draw do
   get "points/index"
 
   get "points/show"
+  
+  post "sources/new"
 
   ##get "users/index"
 
