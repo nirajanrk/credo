@@ -10,8 +10,12 @@ class SourcesController < ApplicationController
   end
 
   def create
-    @source = Source.create(params["source"])
-    redirect_to source_path(@source)
+    @source = Source.new(params["source"])
+    if @source.save
+      redirect_to source_path(@source)
+    else
+      render action: 'new'
+    end
   end
 
   def show

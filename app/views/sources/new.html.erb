@@ -8,6 +8,17 @@
           -John Adams</legend>
 
     <%= form_for setup_source(@source) do |f| %>
+
+      <% if @source.errors.any? %>
+        <div>
+          <ul>
+            <% @source.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <%= f.text_field :title, :placeholder => "Title.." %>
 
         <%= f.fields_for :authors do |builder| %>
