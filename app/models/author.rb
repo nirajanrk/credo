@@ -1,5 +1,5 @@
 class Author < ActiveRecord::Base
   has_and_belongs_to_many :sources
-  validates_presence_of :firstname
-  attr_accessible :firstname, :lastname, :middlename, :authors_attributes
+  validates_presence_of :first_name
+  attr_accessible :first_name, :last_name, :middle_name, :authors_attributes
 end

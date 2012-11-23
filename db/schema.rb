@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122055622) do
+ActiveRecord::Schema.define(:version => 20121123201057) do
 
   create_table "authors", :force => true do |t|
-    t.string   "firstname"
-    t.string   "middlename"
-    t.string   "lastname"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "authors_sources", :force => true do |t|
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20121122055622) do
 
   create_table "points", :force => true do |t|
     t.text     "point"
-    t.datetime "createdate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

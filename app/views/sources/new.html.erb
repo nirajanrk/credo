@@ -11,9 +11,9 @@
       <%= f.text_field :title, :placeholder => "Title.." %>
 
         <%= f.fields_for :authors do |builder| %>
-        <%= builder.label :firstname, "Author" %>
-        <%= builder.text_field :firstname, :placeholder => "First Name.."%>
-        <%= builder.text_field :lastname, :placeholder => "Last Name.."%>
+        <%= builder.label :first_name, "Author" %>
+        <%= builder.text_field :first_name, :placeholder => "First Name.."%>
+        <%= builder.text_field :last_name, :placeholder => "Last Name.."%>
 
       <%end%>
          <br />
