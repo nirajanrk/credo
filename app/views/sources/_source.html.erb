@@ -1,3 +1,21 @@
-<div>
-  <%= source.title %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+  <div class="span1"></div><!--/span-->
+    <div class="span9">
+					<legend>Good Submission!</legend>
+				<p>
+				<strong>Title:</strong>
+				<%= source.title %>
+				</p>
+				
+				<ol>
+				<% for author in source.authors %>
+				<li><%= author.firstname%></li>
+				<% end %>
+				</ol>
+				
+								
+	</div>	
+	</div>
 </div>

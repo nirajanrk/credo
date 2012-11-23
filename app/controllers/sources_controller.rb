@@ -6,12 +6,16 @@ class SourcesController < ApplicationController
   end
 
   def new
+		2.times do
     @source = Source.new
-  end
+		author = @source.authors.build
+		end
+   end
 
   def create
     @source = Source.create(params["source"])
     redirect_to sources_path
+
   end
 
   def show

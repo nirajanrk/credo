@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+  <div class="span1"></div><!--/span-->
+    <div class="span9">
+				<h1>For Source</h1>
+					<legend>Good Submission!</legend>
+				<p>
+				<strong>Title:</strong>
+				<%=h @source.title %>
+				</p>
+				
+				<ol>
+				<% for author in @source.authors %>
+				<li><%=h author.firstname, author.lastname%></li>
+				<% end %>
+				</ol>
+				
+				<p>
+				<%= link_to "Edit", edit_source_path(@source) %> |
+				<%= link_to "Destroy", @source, :confirm => 'Don't do it..', :method => :delete %> |
+				<%= link_to "View All", source_path %>
+				</p>
+					
+	</div>	
+	</div>
+</div>

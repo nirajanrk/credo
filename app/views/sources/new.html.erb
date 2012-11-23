@@ -3,62 +3,34 @@
   <div class="span1"></div><!--/span-->
     <div class="span9">
 
-		<h1>For Source</h1>
-				<legend>Facts are stubborn things; and whatever may be our wishes, our inclinations, or the dictates of our passions, they cannot alter the state of facts and evidence. 
-				-John Adams</legend>
-, :description, :journal, :title, :type, :url, :year
-    <%= form_for @source do |f| %>
-		<%= f.text_field :title, :placeholder => "Title.." %>
-		  <span class="help-block">Ex: Title</span>
-		<%= f.text_field :author, :placeholder => "Author 1.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :author, :placeholder => "Author 2.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :author, :placeholder => "Author 3.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :citation, :placeholder => "Title.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :title, :placeholder => "Title.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :title, :placeholder => "Title.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :title, :placeholder => "Title.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :title, :placeholder => "Title.." %>
-		  <span class="help-block">Ex: Title</span>
-		  <%= f.text_field :title, :placeholder => "Title.." %>
-		  <span class="help-block">Ex: Title</span>
-		  
-    <%= f.submit "Submit", :class => 'btn' %>
+			<h1>For Source</h1>
+					<legend>Facts are stubborn things; and whatever may be our wishes, our inclinations, or the dictates of our passions, they cannot alter the state of facts and evidence. 
+					-John Adams</legend>
+	 
+		<%= form_for @source do |f| %>
+			<%= f.text_field :title, :placeholder => "Title.." %>
+
+			  <%= f.fields_for :authors do |builder| %>
+			  <%= builder.label :firstname, "Author" %>
+				<%= builder.text_field :firstname, :placeholder => "First Name.."%>
+				<%= builder.text_field :lastname, :placeholder => "Last Name.."%>
+				 
+			<%end%>	
+				 <br />
+			  <%= f.text_field :citation, :placeholder => "Citations..ie:25" %> <br />
+			  <%= f.text_area :description, :rows => 3, :placeholder => "Description.." %> <br />
+			  <%= f.text_field :journal, :placeholder => "Publication.." %><br />
+			  <%= f.text_field :year, :placeholder => "Publication year ie:1998" %><br />
+			  <%= f.text_field :url, :placeholder => "Link..ie:tinyurl.com/nutinyhouse" %><br />
+
+					  
+		<%= f.submit "Submit", :class => 'btn' %>
    
 
    <% end %>
 
 
-    DIVIDER _______________________
-		<form>
-		  
-		  <input type="text" placeholder="Title..">
-		  <span class="help-block">Ex: Title</span>
-
-      <input type="text" placeholder="Author(s)..">
-			<span class="help-block">Ex: Title</span>
-
-		    <input type="text" placeholder="Title..">
-			<span class="help-block">Ex: Title</span>
-
-		    <input type="text" placeholder="Title..">
-			<span class="help-block">Ex: Title</span>
-
-		    <input type="text" placeholder="Title..">
-			<span class="help-block">Ex: Title</span>
-		  
-		  <span class="help-block">Ex: Title</span>
-		    <input type="text" placeholder="Title..">
-		  <span class="help-block">Ex: Title</span>
-		  <button type="submit" class="btn">Submit</button>
-		</form>
 	</div>	
 	</div>
-	</div>
+</div>
 	
