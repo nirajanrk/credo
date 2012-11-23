@@ -8,26 +8,21 @@
           -John Adams</legend>
 
     <%= form_for setup_source(@source) do |f| %>
-
-      <% if @source.errors.any? %>
-        <div>
-          <ul>
-            <% @source.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
+      <%= f.error_message_on 'title', prepend_text: 'Title ' %>
       <%= f.text_field :title, :placeholder => "Title.." %>
 
         <%= f.fields_for :authors do |builder| %>
-        <%= builder.label :first_name, "Author" %>
-        <%= builder.text_field :first_name, :placeholder => "First Name.."%>
-        <%= builder.text_field :last_name, :placeholder => "Last Name.."%>
+          <%= builder.label :first_name, "Author" %>
 
-      <%end%>
-         <br />
+          <%= builder.error_message_on 'first_name', prepend_text: 'First name ' %>
+          <%= builder.text_field :first_name, :placeholder => "First Name.."%>
+
+          <%= builder.error_message_on 'last_name', prepend_text: 'Last name ' %>
+          <%= builder.text_field :last_name, :placeholder => "Last Name.."%>
+        <%end%>
+
+        <br />
+
         <%= f.text_field :citation, :placeholder => "Citations..ie:25" %> <br />
         <%= f.text_area :description, :rows => 3, :placeholder => "Description.." %> <br />
         <%= f.text_field :journal, :placeholder => "Publication.." %><br />
