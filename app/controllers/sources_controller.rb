@@ -14,7 +14,7 @@ class SourcesController < ApplicationController
 
   def create
     @source = Source.create(params["source"])
-    redirect_to sources_path
+    redirect_to source_path(@source) 
 
   end
 

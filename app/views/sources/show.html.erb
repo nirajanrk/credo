@@ -4,22 +4,24 @@
     <div class="span9">
 				<h1>For Source</h1>
 					<legend>Good Submission!</legend>
+			
+					<legend><%= @source.title %></legend>
 				<p>
-				<strong>Title:</strong>
-				<%=h @source.title %>
+				<strong>Citations:</strong>
+				<%= @source.citation %>
+				<strong>Link:</strong>
+				<%= @source.url %>
+					<p>
+					<strong>Description:</strong>
+					<%= @source.description %>
+					</p>
 				</p>
-				
 				<ol>
-				<% for author in @source.authors %>
-				<li><%=h author.firstname, author.lastname%></li>
+				<% @source.authors.each  do |author|%>
+				<li>First Name: <%= author.firstname%> Last Name:<%= author.lastname%></li>
 				<% end %>
 				</ol>
 				
-				<p>
-				<%= link_to "Edit", edit_source_path(@source) %> |
-				<%= link_to "Destroy", @source, :confirm => 'Don't do it..', :method => :delete %> |
-				<%= link_to "View All", source_path %>
-				</p>
 					
 	</div>	
 	</div>

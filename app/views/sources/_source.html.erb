@@ -3,12 +3,18 @@
   <div class="row-fluid">
   <div class="span1"></div><!--/span-->
     <div class="span9">
-					<legend>Good Submission!</legend>
-				<p>
-				<strong>Title:</strong>
-				<%= source.title %>
-				</p>
 				
+					<legend><%= source.title %></legend>
+				<p>
+				<strong>Citations:</strong>
+				<%= source.citation %>
+				<strong>Link:</strong>
+				<%= source.url %>
+					<p>
+					<strong>Description:</strong>
+					<%= source.description %>
+					</p>
+				</p>
 				<ol>
 				<% for author in source.authors %>
 				<li><%= author.firstname%></li>
