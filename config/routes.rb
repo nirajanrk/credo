@@ -12,26 +12,26 @@ Credo::Application.routes.draw do
   get "points/index"
 
   get "points/show"
-  
+
   ##post "sources/new"
 
   ##get "users/index"
 
   ##get "users/show"
 
-	authenticated :user do
-		root :to => 'home#index'
-	end
+  authenticated :user do
+    root :to => 'home#index'
+  end
 
-	devise_scope :user do
-		root :to => 'devise/sessions#new'
-	end
-	
-	#after_sign_in_path_for and after_sign_out_path_for
+  devise_scope :user do
+    root :to => 'devise/sessions#new'
+  end
+
+  #after_sign_in_path_for and after_sign_out_path_for
 
   devise_for :users
   resources :users, :only => [:show, :index]
-  resources :sources, :authors, :points
+  resources :sources, :authors, :points, :debates
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe HomeController do
+  before { sign_in FactoryGirl.create(:user) }
 
   describe "GET 'index'" do
     it "returns http success" do

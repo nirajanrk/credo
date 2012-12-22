@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe PointsController do
+  before { sign_in FactoryGirl.create(:user) }
 
   describe "GET 'new'" do
     it "returns http success" do
