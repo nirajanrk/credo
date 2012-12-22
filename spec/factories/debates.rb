@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :debate do
+    sequence(:title) { |n| "Factory title #{n}" }
   end
 end
