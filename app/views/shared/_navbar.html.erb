@@ -9,11 +9,13 @@
       <%= link_to 'Credo', root_path, class: 'brand' %>
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
-          Logged in as <a href="#" class="navbar-link">
           <% if current_user %>
-            <%= link_to current_user.name, current_user %>
+            Logged in as
+            <a href="#" class="navbar-link">
+              <%= link_to current_user.name, current_user %> |
+            </a>
+            <%= link_to 'Log out', destroy_user_session_url, method: :delete %>
           <% end %>
-          </a>
 
         </p>
         <ul class="nav">
