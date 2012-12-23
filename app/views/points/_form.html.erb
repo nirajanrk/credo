@@ -5,6 +5,9 @@
       <%= form_for @point do |f| %>
         <%= f.error_message_on 'title', prepend_text: 'Title ' %>
         <%= f.text_field :title, :placeholder => "Title.." %>
+        <br />
+        <p>Sources</p>
+        <%= f.collection_select :source_ids, @sources, :id, :title, {}, multiple: true %>
         <%= f.submit "Submit", :class => 'btn' %>
       <% end %>
     </div>

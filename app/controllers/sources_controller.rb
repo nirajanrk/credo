@@ -12,7 +12,7 @@ class SourcesController < ApplicationController
     if @source.save
       redirect_to source_path(@source)
     else
-      render action: 'new'
+      render action: :edit
     end
   end
 

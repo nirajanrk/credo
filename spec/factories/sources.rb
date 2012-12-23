@@ -7,7 +7,7 @@ FactoryGirl.define do
     year "MyString"
     journal "MyText"
     description "MyText"
-    citation 1
+    citation_count 1
     url "MyText"
   end
 end

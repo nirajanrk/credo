@@ -1,6 +1,7 @@
 class PointsController < ApplicationController
   def new
     @point = Point.new
+    @sources = Source.all
   end
 
   def create
@@ -8,12 +9,14 @@ class PointsController < ApplicationController
     if @point.save
       redirect_to point_url(@point)
     else
+      @sources = Source.all
       render action: :edit
     end
   end
 
   def edit
     @point = Point.find params[:id]
+    @sources = Source.all
   end
 
   def update
@@ -22,6 +25,7 @@ class PointsController < ApplicationController
     if @point.save
       redirect_to point_url(@point)
     else
+      @sources = Source.all
       render action: :edit
     end
   end
