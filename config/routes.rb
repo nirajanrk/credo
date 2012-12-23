@@ -1,26 +1,6 @@
 Credo::Application.routes.draw do
-  get "points/new"
-
-  get "points/create"
-
-  get "points/edit"
-
-  get "points/update"
-
-  get "points/destroy"
-
-  get "points/index"
-
-  get "points/show"
-
-  ##post "sources/new"
-
-  ##get "users/index"
-
-  ##get "users/show"
-
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'debates#index'
   end
 
   devise_scope :user do
