@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :source do
     type ""
-    title "MyText"
+    sequence(:title) { |n| "Factory title #{n}" }
     year "MyString"
     journal "MyText"
     description "MyText"

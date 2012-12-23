@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9 offset1">
+      <h1>For Source</h1>
+      <%= form_for setup_source(@source) do |f| %>
+        <%= f.error_message_on 'title', prepend_text: 'Title ' %>
+        <%= f.text_field :title, :placeholder => "Title.." %>
+        <div>
+          <%= f.fields_for :authors do |builder| %>
+            <%= builder.label :first_name, "Author" %>
+
+            <%= builder.error_message_on 'first_name', prepend_text: 'First name ' %>
+            <%= builder.text_field :first_name, :placeholder => "First Name.."%>
+
+            <%= builder.error_message_on 'last_name', prepend_text: 'Last name ' %>
+            <%= builder.text_field :last_name, :placeholder => "Last Name.."%>
+          <% end %>
+        </div>
+
+        <%= f.text_field :citation_count, :placeholder => "Citation count.." %>
+        <br />
+        <%= f.text_area :description, :rows => 3, :placeholder => "Description.." %>
+        <br />
+        <%= f.text_field :journal, :placeholder => "Publication.." %>
+        <%= f.text_field :year, :placeholder => "Publication year ie:1998" %>
+        <br />
+        <%= f.text_field :url, :placeholder => "Link..ie:tinyurl.com/nutinyhouse" %>
+        <br />
+
+        <%= f.submit "Submit", :class => 'btn' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

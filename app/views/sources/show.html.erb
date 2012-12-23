@@ -1,28 +1,34 @@
 <div class="container-fluid">
   <div class="row-fluid">
-  <div class="span1"></div><!--/span-->
-    <div class="span9">
-        <h1>For Source</h1>
-          <legend>Good Submission!</legend>
+    <div class="span9 offset1">
+      <h1>Source</h1>
+      <legend><%= @source.title %></legend>
 
-          <legend><%= @source.title %></legend>
-        <p>
-        <strong>Citations:</strong>
-        <%= @source.citation %>
+      <div>
+        <strong>Citation Count:</strong>
+        <%= @source.citation_count %>
+      </div>
+
+      <div>
         <strong>Link:</strong>
         <%= @source.url %>
-          <p>
-          <strong>Description:</strong>
-          <%= @source.description %>
-          </p>
-        </p>
+      </div>
+
+      <div>
+        <strong>Description:</strong>
+        <%= @source.description %>
+      </div>
+
+      <div>
+        <strong>Authors</strong>
         <ol>
-        <% @source.authors.each  do |author|%>
-        <li>First Name: <%= author.first_name%> Last Name:<%= author.last_name%></li>
-        <% end %>
+          <% @source.authors.each  do |author|%>
+            <li>
+              <span><%= author.first_name%> <%= author.last_name%></span>
+            </li>
+          <% end %>
         </ol>
-
-
-  </div>
+      <div>
+    </div>
   </div>
 </div>

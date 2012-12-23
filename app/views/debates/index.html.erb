@@ -12,7 +12,9 @@
           <h2>Debates</h2>
           <div class='span6'>
             <% @debates.each do |debate| %>
-              <%= link_to debate.title, debate_url(debate) %>
+              <div>
+                <%= link_to debate.title, debate_url(debate) %>
+              </div>
             <% end %>
           </div>
         </div>

@@ -10,7 +10,7 @@ describe PointsController do
   end
 
   describe "POST create" do
-    let(:params) { FactoryGirl.attributes_for(:point) }
+    let(:params) { Hash[point: FactoryGirl.attributes_for(:point)] }
     it 'should create the point' do
       expect { post :create, params }.to change{ Point.count }.by(1)
     end
