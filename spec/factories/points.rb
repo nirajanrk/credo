@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :point do
-    point "MyText"
-    createdate ""
+    sequence(:title) { |n| title "I'm making a point! #{n}" }
   end
 end

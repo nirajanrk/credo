@@ -1,2 +1,14 @@
-<h1>Points#index</h1>
-<p>Find me in app/views/points/index.html.erb</p>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9 offset1">
+      <h1>All points</h1>
+      <% @points.each do |point| %>
+        <%= link_to point.title, point_url(point) %>
+        <div class='pull-right'>
+          <%= link_to 'Edit', edit_point_url(point) %> |
+          <%= link_to 'Remove', point_url(point), method: :delete, confirm: 'Are you sure?' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

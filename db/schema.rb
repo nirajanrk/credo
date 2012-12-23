@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222213246) do
+ActiveRecord::Schema.define(:version => 20121223001655) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -38,9 +38,14 @@ ActiveRecord::Schema.define(:version => 20121222213246) do
   end
 
   create_table "points", :force => true do |t|
-    t.text     "point"
+    t.text     "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "points_sources", :force => true do |t|
+    t.integer "point_id"
+    t.integer "source_id"
   end
 
   create_table "sources", :force => true do |t|
