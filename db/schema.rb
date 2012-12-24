@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223012728) do
+ActiveRecord::Schema.define(:version => 20121223151317) do
 
   create_table "authors", :force => true do |t|
     t.string   "first_name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20121223012728) do
   create_table "debates_points", :force => true do |t|
     t.integer "debate_id"
     t.integer "point_id"
+    t.boolean "supporting"
   end
 
   create_table "points", :force => true do |t|
