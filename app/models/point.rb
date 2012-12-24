@@ -3,6 +3,6 @@ class Point < ActiveRecord::Base
 
   has_many :debates, through: :debates_points
   has_many :debates_points
-  attr_accessible :title
+  attr_accessible :title, :source_ids
   validates :title, presence: true, uniqueness: true
 end
