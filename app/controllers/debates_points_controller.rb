@@ -26,4 +26,14 @@ class DebatesPointsController < ApplicationController
     @debates_point.destroy
     redirect_to debate_url(@debates_point.debate_id)
   end
+
+  def vote_up
+    begin
+      debates_point = DebatesPoint.find(params[:id])
+      current_user.vote_for(debates_point)
+      redirect_to debate_url(debates_point.debate_id)
+    rescue ActiveRecord::RecordInvalid
+      redirect_to debate_url(debates_point.debate_id)
+    end
+  end
 end

@@ -11,7 +11,11 @@ Credo::Application.routes.draw do
 
   devise_for :users
   resources :users, :only => [:show, :index]
-  resources :debates_points, only: [:new, :create, :destroy]
+  resources :debates_points, only: [:new, :create, :destroy] do
+    member do
+      post :vote_up
+    end
+  end
   resources :sources, :authors, :points, :debates
 
   # The priority is based upon order of creation:

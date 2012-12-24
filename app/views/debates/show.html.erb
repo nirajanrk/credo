@@ -14,7 +14,11 @@
         <% @debate.debates_points.where(supporting: true).each do |dp| %>
           <li>
             <%= link_to dp.point.title, point_url(dp.point) %>
-            <%= link_to "Delete", debates_point_url(dp), class: 'pull-right', method: :delete%>
+            <div class='pull-right'>
+              Total Votes: <%= dp.plusminus %> |
+              <%= link_to 'Up Vote', vote_up_debates_point_url(dp), method: :post %> |
+              <%= link_to "Delete", debates_point_url(dp), method: :delete %>
+            </div>
           </li>
         <% end %>
       </ul>
@@ -25,7 +29,11 @@
         <% @debate.debates_points.where(supporting: false).each do |dp| %>
           <li>
             <%= link_to dp.point.title, point_url(dp.point) %>
-            <%= link_to "Delete", debates_point_url(dp), class: 'pull-right', method: :delete%>
+            <div class='pull-right'>
+              Total Votes: <%= dp.plusminus %> |
+              <%= link_to 'Up Vote', vote_up_debates_point_url(dp), method: :post %> |
+              <%= link_to "Delete", debates_point_url(dp), method: :delete %>
+            </div>
           </li>
         <% end %>
       </ul>
