@@ -1,12 +1,24 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9 offset1">
-      <h1>New Debate</h1>
+      <h1>Add a Point to a Debate</h1>
       <%= form_for @debates_point do |f| %>
-        <%= f.collection_select :debate_id, @debates, :id, :title %>
-        <%= f.collection_select :point_id, @points, :id, :title %>
-        <%= f.label :supporting, 'Supporting point?' %>
-        <%= f.check_box :supporting, checked: @supporting %>
+        <div class='row-fluid'>
+          <div class='span6'>
+            <%= f.label :debates_point_debate_id, "Debate" %>
+            <%= f.collection_select :debate_id, @debates, :id, :title %>
+          </div>
+
+          <div class='span6'>
+            <%= f.label :debates_point_point_id, "Point" %>
+            <%= f.collection_select :point_id, @points, :id, :title %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :supporting, 'Supporting point?' %>
+          <%= f.check_box :supporting, checked: @supporting %>
+        </div>
         <%= f.submit "Submit", :class => 'btn' %>
        <% end %>
     </div>
