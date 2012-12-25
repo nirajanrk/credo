@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :confirmed_at
 
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
+  validates :name, presence: true
+  validates :email, presence: true
+  validates_uniqueness_of :email, :case_sensitive => false
   acts_as_voter
 end
