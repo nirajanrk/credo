@@ -3,9 +3,10 @@
     <%= link_to 'Edit', edit_debate_path(@debate) %> |
     <%= link_to 'Remove', debate_path(@debate), method: :delete, confirm: 'Are you sure?' %>
     <h1><%= @debate.title %></h1>
+	<h4><%= @debate.summary %></h4>
   </div>
 
-  <%= link_to 'Add a point', new_debates_point_url, class: 'btn' %>
+ <%= link_to 'Add a point', new_debates_point_url, class: 'btn' %>
 
   <div class="row-fluid">
     <div class='span6'>
@@ -14,7 +15,7 @@
         <% @debate.debates_points.where(supporting: true).each do |dp| %>
           <li>
             <%= link_to dp.point.title, point_url(dp.point) %>
-            <div class='pull-right'>
+            <div class='pull-right offset1'>
               Total Votes: <%= dp.plusminus %> |
               <%= link_to 'Up Vote', vote_up_debates_point_url(dp), method: :post %> |
               <%= link_to "Delete", debates_point_url(dp), method: :delete, confirm: 'Are you sure?' %>
@@ -22,6 +23,7 @@
           </li>
         <% end %>
       </ul>
+	 
     </div>
     <div class='span6'>
       <h2>Against</h2>
