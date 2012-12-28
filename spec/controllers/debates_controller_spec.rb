@@ -55,7 +55,7 @@ describe DebatesController do
   end
 
   describe 'POST create' do
-    let(:params) { Hash[debate: { title: 'Sugary drinks are uniquely unhealthy therefore deserving limitation' }] }
+    let(:params) { Hash[debate: { title: 'Sugary drinks are uniquely unhealthy therefore deserving limitation', summary: 'They are bad for you' }] }
     it 'should create the debate' do
       expect { post :create, params }.to change{ Debate.count }.by(1)
     end

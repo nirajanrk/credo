@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :debate do
     sequence(:title) { |n| "Factory title #{n}" }
+    summary "Factory summary"
   end
 end

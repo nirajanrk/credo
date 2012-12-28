@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(:version => 20121227065616) do
   end
 
   create_table "debates", :force => true do |t|
-    t.string   "title", :null => false
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.text     "summary", :null => false
+    t.text     "summary"
   end
 
   create_table "debates_points", :force => true do |t|
