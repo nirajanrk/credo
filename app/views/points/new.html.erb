@@ -1,1 +1,26 @@
-<%= render 'form' %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9 offset1">
+      <h1>Add a Point to a Debate</h1>
+      <%= form_for @point do |f| %>
+        <div class='row-fluid'>
+          <div class='span6'>
+            <%= f.label :point_debate_id, "Debate" %>
+            <%= f.collection_select :debate_id, @debates, :id, :title %>
+          </div>
+
+          <div class='span6'>
+            <%= f.label :point_evidence_id, "Point" %>
+            <%= f.collection_select :evidence_id, @evidences, :id, :title %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :supporting, 'Supporting point?' %>
+          <%= f.check_box :supporting, checked: @supporting %>
+        </div>
+        <%= f.submit "Submit", :class => 'btn' %>
+       <% end %>
+    </div>
+  </div>
+</div>

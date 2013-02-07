@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9 offset1">
+      <%= link_to 'New Point', new_evidence_url, class: 'btn' %>
+      <h1>All points</h1>
+      <% @evidences.each do |evidence| %>
+        <div>
+          <%= link_to evidence.title, evidence_url(evidence) %>
+          <div class='pull-right'>
+            <%= link_to 'Edit', edit_evidence_url(evidence) %> |
+            <%= link_to 'Remove', evidence_url(evidence), method: :delete, confirm: 'Are you sure?' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

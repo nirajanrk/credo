@@ -1,8 +1,6 @@
-class Point < ActiveRecord::Base
-  has_and_belongs_to_many :sources
-
-  has_many :debates, through: :debates_points
-  has_many :debates_points
-  attr_accessible :title, :source_ids
-  validates :title, presence: true, uniqueness: true
+	class Point < ActiveRecord::Base
+  belongs_to :debate
+  belongs_to :evidence
+  validates :debate_id, uniqueness: { scope: [:evidence_id, :supporting] }
+  acts_as_voteable
 end

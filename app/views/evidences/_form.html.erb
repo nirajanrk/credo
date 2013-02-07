@@ -2,7 +2,7 @@
   <div class="row-fluid">
     <div class="span9 offset1">
       <h1>New Point</h1>
-      <%= form_for @point do |f| %>
+      <%= form_for @evidence do |f| %>
         <%= f.error_message_on 'title', prepend_text: 'Title ' %>
         <%= f.text_field :title, :placeholder => "Title.." %>
         <p>Sources</p>

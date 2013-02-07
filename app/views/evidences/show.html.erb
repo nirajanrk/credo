@@ -1,16 +1,16 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9 offset1">
-      <h1><%= @point.title %></h1>
+      <h1><%= @evidence.title %></h1>
       <h2>Sources</h2>
       <ul>
-        <% @point.sources.each do |source| %>
+        <% @evidence.sources.each do |source| %>
           <li>
             <%= link_to source.title, source_url(source) %>
           </li>
         <% end %>
       </ul>
-      <%= link_to 'Back', points_url %>
+      <%= link_to 'Back', evidences_url %>
     </div>
   </div>
 </div>
