@@ -9,22 +9,12 @@
 					  
 			      <h4>Debate Details</h4>
 				  <%= builder.collection_select :debate_id, @debates, :id, :title, {:selected => @debate.id} %>		
-				  <div class="btn-group" data-toggle="buttons-radio">			
-					  	  
-					  <% if !@supporting.nil? %>
-						  <%= label_tag "For the Debate" %>			
-						  <%= builder.radio_button :supporting, true, checked: @supporting, class: "btn btn-primary"%> 
-						  <%= label_tag "Against the Debate" %>	
-						  <%= builder.radio_button :supporting, false, checked: !@supporting, :class => "btn btn-primary" %>
-				      <% else %>
-						  <%= label_tag "For the Debate" %>			
-						  <%= builder.radio_button :supporting, true, class: "btn btn-primary"%> 
-						  <%= label_tag "Against the Debate" %>	
-						  <%= builder.radio_button :supporting, false, :class => "btn btn-primary" %>
-					  <% end %>
-						
-								
+				  <%= f.hidden_field @supporting %>
+				  <div id="supporting_toggle" class="btn-group" data-toggle="buttons-radio">			
+						<button type="button" class="btn" data-supporting=true>For</button>
+						<button type="button" class="btn" data-supporting=false>Against</button>	  
 				  </div>
+
 				<%end%>	
 		<h4>New Point Details</h4>
         <%= f.error_message_on 'title', prepend_text: 'Title ' %>
