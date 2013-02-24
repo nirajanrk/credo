@@ -16,11 +16,12 @@
           <li>
             <%= link_to point.evidence.title, evidence_url(point.evidence) %>
             <div class='pull-right offset1'>
-              Total Votes: <%= point.plusminus %> |
-              <%= link_to 'Up Vote', vote_up_point_url(point), method: :post %> |
-              <%= link_to "Delete", point_url(point), method: :delete, confirm: 'Are you sure?' %>
+              Votes: <%= point.plusminus %> |
+              <%= link_to 'Good Point!', vote_up_point_url(point), method: :post %> 
+              
             </div>
           </li>
+		  <h6><%= link_to "Remove", point_url(point), method: :delete, confirm: 'Are you sure?' %></h6>
         <% end %>
       </ul>
 	  <%= link_to 'For Point', new_evidence_url({debate_id: @debate.id, supporting: true}), class: 'btn' %>
@@ -32,8 +33,8 @@
           <li>
             <%= link_to point.evidence.title, evidence_url(point.evidence) %>
             <div class='pull-right'>
-              Total Votes: <%= point.plusminus %> |
-              <%= link_to 'Up Vote', vote_up_point_url(point), method: :post %> |
+              Votes: <%= point.plusminus %> |
+              <%= link_to 'Good Point!', vote_up_point_url(point), method: :post %> |
               <%= link_to "Delete", point_url(point), method: :delete, confirm: 'Are you sure?' %>
             </div>
           </li>

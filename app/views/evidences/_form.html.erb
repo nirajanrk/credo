@@ -3,13 +3,37 @@
     <div class="span9 offset1">
       <h1>New Evidence</h1>  
       <%= nested_form_for @evidence do |f| %>
+				
+				
+				<%= f.fields_for :points, @evidence.points do |builder| %>				 
+					  
+			      <h4>Debate Details</h4>
+				  <%= builder.collection_select :debate_id, @debates, :id, :title, {:selected => @debate.id} %>		
+				  <div class="btn-group" data-toggle="buttons-radio">			
+					  	  
+					  <% if !@supporting.nil? %>
+						  <%= label_tag "For the Debate" %>			
+						  <%= builder.radio_button :supporting, true, checked: @supporting, class: "btn btn-primary"%> 
+						  <%= label_tag "Against the Debate" %>	
+						  <%= builder.radio_button :supporting, false, checked: !@supporting, :class => "btn btn-primary" %>
+				      <% else %>
+						  <%= label_tag "For the Debate" %>			
+						  <%= builder.radio_button :supporting, true, class: "btn btn-primary"%> 
+						  <%= label_tag "Against the Debate" %>	
+						  <%= builder.radio_button :supporting, false, :class => "btn btn-primary" %>
+					  <% end %>
+						
+								
+				  </div>
+				<%end%>	
+		<h4>New Point Details</h4>
         <%= f.error_message_on 'title', prepend_text: 'Title ' %>
-        <%= f.text_field :title, :placeholder => "What's my point..." %>
-			<h4>Use Existing Sources </h4>
+        <%= f.text_field :title, :placeholder => "What's my point..." %> 
+			<h5>Use Existing Sources </h5>
 			<p>Hold Ctrl to select multiple</p>
 			<%= f.collection_select :source_ids, @sources, :id, :title, {}, multiple: true %>
 			<%= f.fields_for :sources, @evidence.sources.select{|src| src.new_record?} do |s| %>	
-						<h4>New Source</h4>
+						<h5>New Source</h5>
 								<%= s.error_message_on 'title', prepend_text: 'Title ' %>
 									<%= s.text_field :title, :placeholder => "Title.." %>
 									<div>	
@@ -36,19 +60,11 @@
 								<br />
 								
 				  <% end %>
-				   <p><%= f.link_to_add 'Or Add a New Source', :sources %></p>
-
-					
-		        <br />
-		
-				<%= f.fields_for :points, @evidence.points do |builder| %>				 
-					  
-			  <p>Debates</p>
-				<%= builder.collection_select :debate_id, @debates, :id, :title, {:selected => @debate.id} %>		
+				   <p><%= f.link_to_add 'Or Create a New Source', :sources %></p>
 				
-				<p></p>		
-				 <%= builder.check_box :supporting, checked: @supporting  %> For Debate
-				<% end %>  
+		        <br />		
+								
+	  
 			
 	    </div>
 	  </div>
