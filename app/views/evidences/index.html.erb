@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9 offset1">
-      <%= link_to 'New Point', new_evidence_url, class: 'btn' %>
-      <h1>All points</h1>
+      <%= link_to 'New Evidence', new_evidence_url, class: 'btn' %>
+      <h1>All Evidence</h1>
       <% @evidences.each do |evidence| %>
         <div>
           <%= link_to evidence.title, evidence_url(evidence) %>

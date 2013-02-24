@@ -9,7 +9,8 @@ before_filter :show, :only =>[:destroy]
     @point = Point.new
     @debates = Debate.all
     @evidences = Evidence.all
-    @supporting = params[:supporting]
+    @supporting = params[:supporting] 
+
   end
 
   def create
@@ -25,6 +26,7 @@ before_filter :show, :only =>[:destroy]
       @supporting = params[:point][:supporting]
       render action: :new
     end
+
   end
 
   def destroy

@@ -6,7 +6,7 @@
 	<h4><%= @debate.summary %></h4>
   </div>
 
- <%= link_to 'Add a point', new_point_url, class: 'btn' %>
+
 
   <div class="row-fluid">
     <div class='span6'>
@@ -23,7 +23,7 @@
           </li>
         <% end %>
       </ul>
-	 
+	  <%= link_to 'For Point', new_evidence_url({debate_id: @debate.id, supporting: true}), class: 'btn' %>
     </div>
     <div class='span6'>
       <h2>Against</h2>
@@ -39,6 +39,7 @@
           </li>
         <% end %>
       </ul>
+	  	  <%= link_to 'Against Point', new_evidence_url({debate_id: @debate.id, supporting: false}), class: 'btn' %>
     </div>
   </div>
 </div>

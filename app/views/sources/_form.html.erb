@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9 offset1">
-      <h1>For Source</h1>
+      <h1>Source</h1>
       <%= nested_form_for setup_source(@source) do |f| %>
         <%= f.error_message_on 'title', prepend_text: 'Title ' %>
         <%= f.text_field :title, :placeholder => "Title.." %>
