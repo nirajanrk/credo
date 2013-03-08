@@ -17,15 +17,15 @@
             <%= link_to point.evidence.title, evidence_url(point.evidence) %>
             <div class='pull-right offset1'>
               Votes: <%= point.plusminus %> |
-              <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %>
-
+              <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> |
+              <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %>
             </div>
           </li>
-      <h6><%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %></h6>
         <% end %>
       </ul>
     <%= link_to 'For Point', new_debate_point_url({debate_id: @debate.id, supporting: true}), class: 'btn' %>
     </div>
+
     <div class='span6'>
       <h2>Against</h2>
       <ul>
@@ -35,12 +35,12 @@
             <div class='pull-right'>
               Votes: <%= point.plusminus %> |
               <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> |
-              <%= link_to "Delete", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %>
+              <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %>
             </div>
           </li>
         <% end %>
       </ul>
-        <%= link_to 'Against Point', new_debate_point_url({debate_id: @debate.id, supporting: false}), class: 'btn' %>
+      <%= link_to 'Against Point', new_debate_point_url({debate_id: @debate.id, supporting: false}), class: 'btn' %>
     </div>
   </div>
 </div>
