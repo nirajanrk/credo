@@ -5,5 +5,5 @@ class Source < ActiveRecord::Base
   attr_accessible :authors_attributes
 
   validates :title, presence: true, uniqueness: true
-  validates :citation_count, numericality: true
+  validates :citation_count, numericality: true, allow_nil: true
 end

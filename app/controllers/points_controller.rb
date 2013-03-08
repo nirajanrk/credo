@@ -1,35 +1,34 @@
 class PointsController < ApplicationController
-before_filter :show, :only =>[:destroy]
-
   def show
-    @point = Point.find params[:id]  
+    @point = Point.find params[:id]
   end
-   
-  def new
-    @point = Point.new
-    @debates = Debate.all
-    @evidences = Evidence.all
-    @supporting = params[:supporting] 
 
+  def new
+    @debate = Debate.find params[:debate_id]
+    @point = Point.new(debate_id: @debate.id)
+    @sources = Source.all
+    if params[:supporting] == "true"
+      @supporting = true
+    elsif params[:supporting] == "false"
+      @supporting = false
+    end
   end
 
   def create
-    @point = Point.new
-    @point.debate_id = params[:point][:debate_id]
-    @point.evidence_id = params[:point][:evidence_id]
-    @point.supporting= params[:point][:supporting]
+    debate_id = params[:debate_id]
+    @point = Point.new(params[:point].merge(debate_id: debate_id))
     if @point.save
-      redirect_to debate_url(params[:point][:debate_id])
+      redirect_to debate_url(debate_id)
     else
-      @debates = Debate.all
-      @evidences = Evidence.all
+      @debate = Debate.find debate_id
+      @sources = Source.all
       @supporting = params[:point][:supporting]
       render action: :new
     end
-
   end
 
   def destroy
+    @point = Point.find params[:id]
     @point.destroy
     redirect_to debate_url(@point.debate_id)
   end

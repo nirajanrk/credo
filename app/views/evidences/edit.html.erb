@@ -1,1 +1,54 @@
-<%= render 'form' %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9 offset1">
+      <%= nested_form_for @evidence do |f| %>
+        <%= f.error_message_on 'title', prepend_text: 'Title ' %>
+        <%= f.text_field :title, :placeholder => "What's my point..." %>
+
+        <h5>Use Existing Sources </h5>
+        <p>Hold Ctrl to select multiple</p>
+        <%= f.collection_select :source_ids, @evidence.sources, :id, :title, {}, multiple: true %>
+        <%= f.fields_for :sources, @evidence.sources.select{|src| src.new_record?} do |s| %>
+          <h5>New Source</h5>
+          <%= s.error_message_on 'title', prepend_text: 'Title ' %>
+          <%= s.text_field :title, :placeholder => "Title.." %>
+
+          <div>
+            <p>Authors</p>
+            <%= s.fields_for :authors, (s.object.authors.empty? ? [s.object.authors.build] : s.object.authors) do |authors| %>
+              <%= authors.error_message_on 'first_name', prepend_text: 'First name ' %>
+              <%= authors.text_field :first_name, :placeholder => "First Name.."%>
+
+              <%= authors.error_message_on 'last_name', prepend_text: 'Last name ' %>
+              <%= authors.text_field :last_name, :placeholder => "Last Name.."%>
+            <% end %>
+            <p><%= s.link_to_add 'Add an author', :authors%></p>
+          </div>
+
+          <%= s.text_field :citation_count, :placeholder => "Citation count.." %>
+          <br />
+          <%= s.text_area :description, :rows => 3, :placeholder => "Description.." %>
+          <br />
+          <%= s.text_field :journal, :placeholder => "Publication.." %>
+          <%= s.text_field :year, :placeholder => "Publication year ie:1998" %>
+          <br />
+          <%= s.text_field :url, :placeholder => "Link..ie:tinyurl.com/nutinyhouse" %>
+          <br />
+        <% end %>
+        <p><%= f.link_to_add 'Or Create a New Source', :sources %></p>
+        <br />
+
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div class="span9 offset1">
+              <%= f.submit "Submit", :class => 'btn' %>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
