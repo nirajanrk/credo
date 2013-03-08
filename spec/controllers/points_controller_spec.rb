@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe evidencesController do
+describe PointsController do
   before { sign_in FactoryGirl.create(:user) }
 
   describe 'GET new' do
