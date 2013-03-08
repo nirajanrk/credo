@@ -50,4 +50,11 @@ describe PointsController do
       expect { delete :destroy, id: point.id, debate_id: point.debate_id }.to change{ Point.count }.by(-1)
     end
   end
+
+  describe 'POST vote_up' do
+    let(:point) { FactoryGirl.create(:point) }
+    before { post :vote_up, { point_id: point.id, debate_id: point.debate_id } }
+    subject { point }
+    its(:votes_for) { should == 1 }
+  end
 end

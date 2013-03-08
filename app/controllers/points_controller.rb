@@ -35,7 +35,7 @@ class PointsController < ApplicationController
 
   def vote_up
     begin
-      point = Point.find(params[:id])
+      point = Point.find(params[:point_id])
       current_user.vote_for(point)
       redirect_to debate_url(point.debate_id)
     rescue ActiveRecord::RecordInvalid
