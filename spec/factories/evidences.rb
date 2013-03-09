@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :evidence do
-    sequence(:title) { |n| title "I'm making a point! #{n}" }
+    sequence(:title) { |n| "I'm making a point! #{n}" }
   end
 end

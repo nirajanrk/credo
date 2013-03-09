@@ -21,4 +21,31 @@ describe EvidencesController do
     it { should render_template :index }
     it { should assign_to(:evidences) }
   end
+
+  describe 'GET edit' do
+    let(:evidence) { FactoryGirl.create(:evidence) }
+    before { get :edit, id: evidence.id }
+    it { should assign_to(:sources) }
+  end
+
+  describe 'PUT update' do
+    let!(:evidence) { FactoryGirl.create(:evidence) }
+    let(:params) { Hash[id: evidence.id, evidence: { title: 'new title' }] }
+
+    context 'valid params' do
+      before { put :update, params }
+      subject { assigns(:evidence) }
+
+      it { should be_valid }
+      its(:title) { should eq 'new title' }
+    end
+
+    context 'invalid params' do
+      it 'should assign_to(:sources)' do
+        Evidence.any_instance.stub(:save).and_return(false)
+        put :update, params
+        assigns(:sources).should_not be_nil
+      end
+    end
+  end
 end

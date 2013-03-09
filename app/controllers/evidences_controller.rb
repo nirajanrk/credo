@@ -15,6 +15,7 @@ class EvidencesController < ApplicationController
 
   def edit
     @evidence = Evidence.find params[:id]
+    @sources = Source.all
   end
 
   def update
@@ -23,6 +24,7 @@ class EvidencesController < ApplicationController
     if @evidence.save
       redirect_to evidence_url(@evidence)
     else
+      @sources = Source.all
       render action: :edit
     end
   end

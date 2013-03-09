@@ -7,7 +7,7 @@
 
         <h5>Use Existing Sources </h5>
         <p>Hold Ctrl to select multiple</p>
-        <%= f.collection_select :source_ids, @evidence.sources, :id, :title, {}, multiple: true %>
+        <%= f.collection_select :source_ids, @sources, :id, :title, {}, multiple: true %>
         <%= f.fields_for :sources, @evidence.sources.select{|src| src.new_record?} do |s| %>
           <h5>New Source</h5>
           <%= s.error_message_on 'title', prepend_text: 'Title ' %>
