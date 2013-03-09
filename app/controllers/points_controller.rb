@@ -7,6 +7,7 @@ class PointsController < ApplicationController
     @debate = Debate.find params[:debate_id]
     @point = Point.new(debate_id: @debate.id)
     @sources = Source.all
+    @evidences = Evidence.all
     if params[:supporting] == "true"
       @supporting = true
     elsif params[:supporting] == "false"
@@ -20,6 +21,7 @@ class PointsController < ApplicationController
     if @point.save
       redirect_to debate_url(debate_id)
     else
+      @evidences = Evidence.all
       @debate = Debate.find debate_id
       @sources = Source.all
       @supporting = params[:point][:supporting]

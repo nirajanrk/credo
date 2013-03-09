@@ -2,45 +2,7 @@
   <div class="row-fluid">
     <div class="span9 offset1">
       <%= nested_form_for [@debate, @point] do |f| %>
-        <h4>Debate Details</h4>
-        <%= @debate.title %>
-
-        <h4>New Evidence</h4>
-        <%= f.fields_for :evidence, (@point.evidence || @point.build_evidence) do |evidence_form| %>
-          <%= evidence_form.error_message_on 'title', prepend_text: 'Title ' %>
-          <%= evidence_form.text_field :title, :placeholder => "What's my point..." %>
-          <h5>Use Existing Sources </h5>
-          <p>Hold Ctrl/Cmd to select multiple</p>
-          <%= evidence_form.collection_select :source_ids, @sources, :id, :title, {}, multiple: true %>
-          <%= evidence_form.fields_for :sources, evidence_form.object.sources.select{|src| src.new_record?} do |source_form| %>
-            <h5>New Source</h5>
-            <%= source_form.error_message_on 'title', prepend_text: 'Title ' %>
-            <%= source_form.text_field :title, :placeholder => "Title.." %>
-            <div>
-              <p>Authors</p>
-              <%= source_form.fields_for :authors, (source_form.object.authors.empty? ? [source_form.object.authors.build] : source_form.object.authors) do |author_form| %>
-                <%= author_form.error_message_on 'first_name', prepend_text: 'First name ' %>
-                <%= author_form.text_field :first_name, :placeholder => "First Name.."%>
-
-                <%= author_form.error_message_on 'last_name', prepend_text: 'Last name ' %>
-                <%= author_form.text_field :last_name, :placeholder => "Last Name.."%>
-              <% end %>
-              <p><%= source_form.link_to_add 'Add an author', :authors%></p>
-            </div>
-
-            <%= source_form.text_field :citation_count, :placeholder => "Citation count.." %>
-            <br />
-            <%= source_form.text_area :description, :rows => 3, :placeholder => "Description.." %>
-            <br />
-            <%= source_form.text_field :journal, :placeholder => "Publication.." %>
-            <%= source_form.text_field :year, :placeholder => "Publication year ie:1998" %>
-            <br />
-            <%= source_form.text_field :url, :placeholder => "Link..ie:tinyurl.com/nutinyhouse" %>
-            <br />
-
-          <% end %>
-          <p><%= evidence_form.link_to_add 'Or Create a New Source', :sources %></p>
-        <% end %>
+        <h4><%= @debate.title %></h4>
 
         <div class="btn-group" data-toggle="buttons-radio">
 
@@ -56,6 +18,54 @@
             <%= f.radio_button :supporting, false, :class => "btn btn-primary" %>
           <% end %>
         </div>
+
+        <h4>Use existing evidence</h4>
+        <%= f.collection_select :evidence_id, @evidences, :id, :title, include_blank: true %>
+
+        <h4>-- OR --</h4>
+
+        <div id='evidence_form' class='hidden'>
+          <%= f.fields_for :evidence, @point.evidence do |evidence_form| %>
+            <h4>New Evidence</h4>
+            <%= evidence_form.error_message_on 'title', prepend_text: 'Title ' %>
+            <%= evidence_form.text_field :title, :placeholder => "What's my point..." %>
+            <h5>Use Existing Sources </h5>
+            <p>Hold Ctrl/Cmd to select multiple</p>
+            <%= evidence_form.collection_select :source_ids, @sources, :id, :title, {}, multiple: true %>
+            <%= evidence_form.fields_for :sources, evidence_form.object.sources.select{|src| src.new_record?} do |source_form| %>
+              <h5>New Source</h5>
+              <%= source_form.error_message_on 'title', prepend_text: 'Title ' %>
+              <%= source_form.text_field :title, :placeholder => "Title.." %>
+              <div>
+                <p>Authors</p>
+                <%= source_form.fields_for :authors, (source_form.object.authors.empty? ? [source_form.object.authors.build] : source_form.object.authors) do |author_form| %>
+                  <%= author_form.error_message_on 'first_name', prepend_text: 'First name ' %>
+                  <%= author_form.text_field :first_name, :placeholder => "First Name.."%>
+
+                  <%= author_form.error_message_on 'last_name', prepend_text: 'Last name ' %>
+                  <%= author_form.text_field :last_name, :placeholder => "Last Name.."%>
+                <% end %>
+                <p><%= source_form.link_to_add 'Add an author', :authors%></p>
+              </div>
+
+              <%= source_form.text_field :citation_count, :placeholder => "Citation count.." %>
+              <br />
+              <%= source_form.text_area :description, :rows => 3, :placeholder => "Description.." %>
+              <br />
+              <%= source_form.text_field :journal, :placeholder => "Publication.." %>
+              <%= source_form.text_field :year, :placeholder => "Publication year ie:1998" %>
+              <br />
+              <%= source_form.text_field :url, :placeholder => "Link..ie:tinyurl.com/nutinyhouse" %>
+              <br />
+
+            <% end %>
+            <%= evidence_form.link_to_add 'Or Create a New Source', :sources %>
+            <div class='remove_evidence'>
+              <%= evidence_form.link_to_remove 'Remove New Evidence' %>
+            </div>
+          <% end %>
+        </div>
+        <%= f.link_to_add 'Add New Evidence', :evidence, id: 'add_new_evidence' %>
 
         <div class="container-fluid">
           <div class="row-fluid">
