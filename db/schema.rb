@@ -28,15 +28,9 @@ ActiveRecord::Schema.define(:version => 20130207031036) do
 
   create_table "debates", :force => true do |t|
     t.string   "title"
+    t.text     "summary"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.text     "summary"
-  end
-
-  create_table "debates_points", :force => true do |t|
-    t.integer "debate_id"
-    t.integer "point_id"
-    t.boolean "supporting"
   end
 
   create_table "evidences", :force => true do |t|
@@ -54,11 +48,6 @@ ActiveRecord::Schema.define(:version => 20130207031036) do
     t.integer "debate_id"
     t.integer "evidence_id"
     t.boolean "supporting"
-  end
-
-  create_table "points_sources", :force => true do |t|
-    t.integer "point_id"
-    t.integer "source_id"
   end
 
   create_table "sources", :force => true do |t|
