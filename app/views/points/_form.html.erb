@@ -57,6 +57,9 @@
               <br />
               <%= source_form.text_field :url, :placeholder => "Link..ie:tinyurl.com/nutinyhouse" %>
               <br />
+              <div class='remove_evidence'>
+                <%= source_form.link_to_remove 'Remove this source' %>
+              </div>
 
             <% end %>
             <%= evidence_form.link_to_add 'Or Create a New Source', :sources %>
@@ -65,7 +68,7 @@
             </div>
           <% end %>
         </div>
-        <%= f.link_to_add 'Add New Evidence', :evidence, id: 'add_new_evidence' %>
+        <%= f.link_to_add 'Add New Evidence', :evidence %>
 
         <div class="container-fluid">
           <div class="row-fluid">
