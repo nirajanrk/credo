@@ -15,17 +15,18 @@
         <% @debate.points.where(supporting: true).each do |point| %>
           <li>
             <%= link_to point.evidence.title, evidence_url(point.evidence) %>
-            <div class='pull-right offset1'>
-              Sources: <%= point.evidence.sources.count %> | 
+              <p>
+                <div class='pull-left'><font size="1"><%= link_to "Edit", edit_evidence_path(point.evidence) %> | 
+                  <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %> ....... 
+                </font></div>
+              </p> 
+               <p> <font size="2"> Sources: <%= point.evidence.sources.count %> | 
               <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> | Votes: <%= point.plusminus %> 
-                <p> <%= link_to "Edit", edit_evidence_path(point.evidence) %> | 
-                  <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %> 
-                </p>
-            </div>
+              </font></p>
           </li>
         <% end %>
       </ul>
-    <%= link_to 'For Point', new_debate_point_url({debate_id: @debate.id, supporting: true}), class: 'btn' %>
+       <%= link_to 'For Point', new_debate_point_url({debate_id: @debate.id, supporting: true}), class: 'btn' %>
     </div>
 
     <div class='span6'>
@@ -34,13 +35,14 @@
         <% @debate.points.where(supporting: false).each do |point| %>
           <li>
             <%= link_to point.evidence.title, evidence_url(point.evidence) %>
-            <div class='pull-right'>
-              Sources: <%= point.evidence.sources.count %> | 
+              <p>
+                <div class='pull-left'><font size="1"><%= link_to "Edit", edit_evidence_path(point.evidence) %> | 
+                  <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %> ....... 
+                </font></div>
+              </p> 
+               <p> <font size="2"> Sources: <%= point.evidence.sources.count %> | 
               <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> | Votes: <%= point.plusminus %> 
-                <p> <%= link_to "Edit", edit_evidence_path(point.evidence) %> | 
-                  <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %> 
-                </p>
-            </div>
+              </font></p>
           </li>
         <% end %>
       </ul>
