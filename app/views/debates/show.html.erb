@@ -16,9 +16,11 @@
           <li>
             <%= link_to point.evidence.title, evidence_url(point.evidence) %>
             <div class='pull-right offset1'>
-              Sources: <%= point.evidence.sources.count %> | Votes: <%= point.plusminus %> |
-              <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> |
-              <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %>
+              Sources: <%= point.evidence.sources.count %> | 
+              <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> | Votes: <%= point.plusminus %> 
+                <p> <%= link_to "Edit", edit_evidence_path(point.evidence) %> | 
+                  <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %> 
+                </p>
             </div>
           </li>
         <% end %>
@@ -33,9 +35,11 @@
           <li>
             <%= link_to point.evidence.title, evidence_url(point.evidence) %>
             <div class='pull-right'>
-              Sources: <%= point.evidence.sources.count %> | Votes: <%= point.plusminus %> |
-              <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> |
-              <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %>
+              Sources: <%= point.evidence.sources.count %> | 
+              <%= link_to 'Good Point!', debate_point_vote_up_url(@debate, point), method: :post %> | Votes: <%= point.plusminus %> 
+                <p> <%= link_to "Edit", edit_evidence_path(point.evidence) %> | 
+                  <%= link_to "Remove", debate_point_url(@debate, point), method: :delete, confirm: 'Are you sure?' %> 
+                </p>
             </div>
           </li>
         <% end %>
