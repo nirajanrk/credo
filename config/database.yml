@@ -4,6 +4,22 @@
 development:
   adapter: postgresql
   encoding: utf8
+  database: credo_development
+  pool: 5
+  username: credo
+  password: credo
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: credo_test
+  pool: 5
+  username: credo
+  password: credo
+
+production:
+  adapter: postgresql
+  encoding: utf8
   database: credo
   pool: 5
   username: credo
