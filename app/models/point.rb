@@ -2,7 +2,7 @@ class Point < ActiveRecord::Base
   belongs_to :debate
   belongs_to :evidence
   validates :debate_id, presence: true, uniqueness: { scope: [:evidence_id, :supporting] }
-  validates :evidence_id, presence: true
+  validates :evidence, presence: true
   acts_as_voteable
   accepts_nested_attributes_for :evidence
 

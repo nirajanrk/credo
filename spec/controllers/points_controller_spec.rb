@@ -24,8 +24,10 @@ describe PointsController do
     end
 
     context 'with validation errors' do
-      before { Point.any_instance.stub(:save).and_return(false) }
-      before { post :create, params }
+      before  do
+        Point.any_instance.stub(:save).and_return(false)
+        post :create, params
+      end
       it { should render_template :new}
     end
 
@@ -33,6 +35,7 @@ describe PointsController do
       let(:evidence_attributes) do
         { title: "bla" }
       end
+
       let(:params) { Hash[point: { debate_id: debate.id, supporting: true, evidence_attributes: evidence_attributes }, debate_id: debate.id] }
       before { post :create, params }
 
